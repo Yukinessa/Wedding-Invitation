@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Engagement Backdrop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@500&family=Pinyon+Script&display=block" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF6EF; --blush: #F6D5D9; --sage: #C9D8B6;
+    --matcha: #5E7D47; --berry: #B5536B; --ink: #3E3A34;
+  }
+  html, body { margin: 0; padding: 0; background: var(--paper); }
+  .stage { position: relative; width: 3840px; height: 2160px; overflow: hidden; background: var(--paper); }
+  svg.art { position: absolute; inset: 0; }
+  .text {
+    position: absolute; left: 0; right: 0; top: 560px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .bismillah { font-family: 'Amiri', serif; font-size: 68px; color: var(--matcha); line-height: 1.4; }
+  .eyebrow {
+    font-family: 'Jost', sans-serif; font-weight: 500; font-size: 52px;
+    letter-spacing: 0.42em; padding-left: 0.42em; color: var(--matcha); margin-top: 44px;
+  }
+  .names {
+    font-family: 'Pinyon Script', cursive; font-size: 250px; line-height: 1.2;
+    color: var(--matcha); white-space: nowrap; margin-top: 6px;
+  }
+  .names .amp { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--berry); font-size: 0.6em; padding: 0 0.2em; vertical-align: 0.08em; }
+  .divider { width: 760px; height: 100px; margin: -6px 0 4px; }
+  .tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 74px; color: var(--matcha); }
+  .date {
+    font-family: 'Cormorant Garamond', serif; font-weight: 500;
+    font-size: 92px; color: var(--ink); letter-spacing: 0.04em; margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="art" width="3840" height="2160" viewBox="0 0 3840 2160" xmlns="http://www.w3.org/2000/svg">
+    <defs id="defs">
+      <filter id="wc" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feGaussianBlur in="d" stdDeviation="0.6" result="soft"/>
+        <feMorphology in="soft" operator="erode" radius="2.5" result="er"/>
+        <feComposite in="soft" in2="er" operator="out" result="edge"/>
+        <feGaussianBlur in="edge" stdDeviation="1.2" result="edgeB"/>
+        <feColorMatrix in="edgeB" type="matrix" values="0.74 0 0 0 0  0 0.74 0 0 0  0 0 0.74 0 0  0 0 0 0.8 0" result="edgeDark"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" seed="9" result="grain"/>
+        <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.8 1.2" result="grainA"/>
+        <feComposite in="soft" in2="grainA" operator="in" result="body"/>
+        <feColorMatrix in="body" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.92 0" result="bodyA"/>
+        <feMerge><feMergeNode in="bodyA"/><feMergeNode in="edgeDark"/></feMerge>
+      </filter>
+      <filter id="wash" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="4" seed="2" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="140" xChannelSelector="R" yChannelSelector="G" result="d"/>
+        <feGaussianBlur in="d" stdDeviation="10" result="soft"/>
+        <feMorphology in="d" operator="erode" radius="14" result="er"/>
+        <feComposite in="d" in2="er" operator="out" result="edge"/>
+        <feGaussianBlur in="edge" stdDeviation="6" result="edgeB"/>
+        <feColorMatrix in="edgeB" type="matrix" values="0.94 0 0 0 0  0 0.94 0 0 0  0 0 0.94 0 0  0 0 0 0.4 0" result="edgeDark"/>
+        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="2" seed="11" result="bloom"/>
+        <feColorMatrix in="bloom" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.8 1.15" result="bloomA"/>
+        <feComposite in="soft" in2="bloomA" operator="in" result="body"/>
+        <feMerge><feMergeNode in="body"/><feMergeNode in="edgeDark"/></feMerge>
+      </filter>
+      <filter id="soften"><feGaussianBlur stdDeviation="3.5"/></filter>
+      <filter id="shadow"><feGaussianBlur stdDeviation="14"/></filter>
+      <filter id="lift" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse">
+        <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#5A3A40" flood-opacity=".16"/>
+      </filter>
+      <filter id="paper" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" seed="7" result="g"/>
+        <feColorMatrix in="g" type="matrix" values="0 0 0 0 0.36  0 0 0 0 0.32  0 0 0 0 0.26  0 0 0 -0.9 0.55"/>
+      </filter>
+      <radialGradient id="vignette" cx="50%" cy="50%" r="75%">
+        <stop offset="62%" stop-color="#3E3A34" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#3E3A34" stop-opacity="0.10"/>
+      </radialGradient>
+      <radialGradient id="archFill" cx="50%" cy="45%" r="60%">
+        <stop offset="0%" stop-color="#FFFDF8"/>
+        <stop offset="80%" stop-color="#FCF6EE"/>
+        <stop offset="100%" stop-color="#F8E4E3"/>
+      </radialGradient>
+    </defs>
+    <g id="washes"></g>
+    <g id="back" opacity="0.4" filter="url(#soften)"></g>
+    <g id="arch"></g>
+    <g id="mid"></g>
+    <g id="front"></g>
+    <g id="petals"></g>
+    <rect width="3840" height="2160" filter="url(#paper)" opacity="0.15"/>
+    <rect width="3840" height="2160" fill="url(#vignette)"/>
+  </svg>
+
+  <div class="text">
+    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+    <div class="eyebrow">THE ENGAGEMENT OF</div>
+    <div class="names">Amrin<span class="amp">&amp;</span>Desty</div>
+    <svg class="divider" id="divider" viewBox="0 0 760 100"></svg>
+    <div class="tagline">bersemi dalam ridha-Nya</div>
+    <div class="date">Sabtu, 28 November 2026</div>
+  </div>
+</div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;}}
+const rnd = mulberry32(28112026);
+const R = (a,b) => a + (b-a)*rnd();
+const pick = arr => arr[Math.floor(rnd()*arr.length)];
+function el(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for(const k in attrs) e.setAttribute(k,attrs[k]); parent&&parent.appendChild(e); return e; }
+const $ = id => document.getElementById(id);
+const defs = $('defs');
+const f = n => (+n).toFixed(1);
+
+/* ---------- Gradients ---------- */
+function lin(id, a, b){ const g=el('linearGradient',{id,x1:0,y1:1,x2:0,y2:0},defs); el('stop',{offset:0,'stop-color':a},g); el('stop',{offset:1,'stop-color':b},g); return `url(#${id})`; }
+function rad(id, a, b, cx=.5, cy=.5, r=.6){ const g=el('radialGradient',{id,cx,cy,r},defs); el('stop',{offset:0,'stop-color':a},g); el('stop',{offset:1,'stop-color':b},g); return `url(#${id})`; }
+const LEAF = [['#4E6E3A','#9DBB82'],['#5E7D47','#B3C99A'],['#46653A','#8FAE73'],['#6A8B50','#C2D4A8'],['#557544','#A6C08B']].map((c,i)=>lin('lf'+i,...c));
+const EUC  = [['#7C9C6A','#B9CDA6'],['#6E8F5E','#A9C196'],['#8AA878','#C6D7B4']].map((c,i)=>lin('eu'+i,...c));
+const PETAL_W = rad('pw','#FFFFFF','#F3D9DD',.5,.9,.9);
+const SUN_A = lin('sunA','#D98E26','#F6CF63');
+const SUN_B = lin('sunB','#E7A73A','#FADB7A');
+const SUN_C = rad('sunC','#8A5A2B','#4B2F1B',.45,.4,.7);
+const ROSE = [['#F8CBD3','#EC9FAE','#C95B76'],['#FBE0E4','#F2B8C2','#D9768C'],['#F4B3C0','#E5869A','#B84A64'],['#FFF7F3','#F5E1DA','#D2A3A3']];
+const PEONY = [['#FBD9DF','#F2AFBD','#D0687F'],['#FDE8EB','#F6C6CF','#DE8A9C'],['#F7C1CB','#EA97A8','#C2566F']];
+const COSMOS = ['#F4B3C0','#F8CBD3','#EDA0B1'].map((c,i)=>rad('cos'+i,'#FFF3F5',c,.5,.9,.95));
+
+/* ---------- Primitives ---------- */
+function leafD(L, Wd, serr, n, pow){
+  const r=[], l=[];
+  for(let i=0;i<=n;i++){ const t=i/n; let w=Wd/2*Math.pow(Math.sin(Math.PI*t),pow)*(1-.2*t);
+    if(t>.08&&t<.92) w*= 1 + serr*(i%2?1:-1); r.push([w,-L*t]); l.push([-w,-L*t]); }
+  return 'M0,0 ' + r.map(p=>`L${f(p[0])},${f(p[1])}`).join(' ') + ' ' + l.reverse().map(p=>`L${f(p[0])},${f(p[1])}`).join(' ') + 'Z';
+}
+function leaf(g, x, y, ang, L, fill){
+  const lg = el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(ang)})`},g);
+  el('path',{d:leafD(L, L*.4, .02, 18, .8), fill:fill||pick(LEAF), stroke:'#46653A','stroke-width':1.2,'stroke-opacity':.35},lg);
+  el('path',{d:`M0,${f(-L*.03)} Q${f(L*.03)},${f(-L*.5)} 0,${f(-L*.93)}`,stroke:'#EEF2DF','stroke-width':Math.max(1.4,L*.016),fill:'none',opacity:.45,'stroke-linecap':'round'},lg);
+}
+function stem(g, pts, w, col='#5F7F46'){ el('path',{d:'M'+pts.map(p=>f(p[0])+','+f(p[1])).join(' L'),stroke:col,'stroke-width':w,fill:'none','stroke-linecap':'round','stroke-linejoin':'round'},g); }
+function bezPoint(p0,p1,p2,t){ const u=1-t; return [u*u*p0[0]+2*u*t*p1[0]+t*t*p2[0], u*u*p0[1]+2*u*t*p1[1]+t*t*p2[1]]; }
+function bezAng(p0,p1,p2,t){ const tx=2*(1-t)*(p1[0]-p0[0])+2*t*(p2[0]-p1[0]), ty=2*(1-t)*(p1[1]-p0[1])+2*t*(p2[1]-p1[1]); return Math.atan2(ty,tx)*180/Math.PI; }
+function leafBranch(g,p0,p1,p2,{n=10,size=160,w=6,fill}={}){
+  const pts=[]; for(let i=0;i<=24;i++) pts.push(bezPoint(p0,p1,p2,i/24)); stem(g,pts,w);
+  for(let i=0;i<n;i++){ const t=.1+i/n*.86; const [x,y]=bezPoint(p0,p1,p2,t); const a=bezAng(p0,p1,p2,t);
+    leaf(g,x,y,a+90+(i%2?1:-1)*R(38,58),size*(1-t*.4)*R(.88,1.12),fill); }
+  leaf(g,p2[0],p2[1],bezAng(p0,p1,p2,1)+90,size*.5,fill);
+}
+function eucalyptus(g,p0,p1,p2,{n=9,size=34,w=4}={}){
+  const pts=[]; for(let i=0;i<=24;i++) pts.push(bezPoint(p0,p1,p2,i/24)); stem(g,pts,w,'#7A8F6A');
+  for(let i=0;i<n;i++){ const t=.08+i/n*.9; const [x,y]=bezPoint(p0,p1,p2,t); const a=bezAng(p0,p1,p2,t)*Math.PI/180;
+    const s=size*(1-t*.45)*R(.9,1.1); const nx=-Math.sin(a), ny=Math.cos(a); const fill=pick(EUC);
+    [1,-1].forEach(d=>el('ellipse',{cx:f(x+nx*d*s*.95),cy:f(y+ny*d*s*.95),rx:f(s),ry:f(s*.86),fill,transform:`rotate(${f(a*180/Math.PI)} ${f(x+nx*d*s*.95)} ${f(y+ny*d*s*.95)})`},g)); }
+}
+function rose(g,x,y,s){
+  const pal=pick(ROSE);
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(R(0,360))}) scale(${s.toFixed(2)})`},g);
+  el('circle',{cx:0,cy:0,r:80,fill:pal[1]},G);
+  [[78,7,0],[62,6,0],[47,6,1],[33,5,1],[20,4,2]].forEach(([rr,n,c])=>{ const off=R(0,360);
+    for(let i=0;i<n;i++){ const w=rr*Math.sin(Math.PI/n)*1.55+6, h=rr*.75;
+      el('path',{d:`M${f(-w)},0 C${f(-w)},${f(-h)} ${f(w)},${f(-h)} ${f(w)},0 C${f(w*.5)},${f(-h*.32)} ${f(-w*.5)},${f(-h*.32)} ${f(-w)},0Z`,
+        fill:pal[c],stroke:pal[2],'stroke-width':1.6,'stroke-opacity':.5,transform:`rotate(${f(off+i*360/n)}) translate(0,${f(-rr*.55)})`},G); } });
+  el('circle',{cx:0,cy:0,r:9,fill:pal[2]},G);
+  el('path',{d:'M0,0 C6,-6 12,2 6,10 C-2,16 -14,6 -10,-6 C-6,-16 10,-18 16,-6',stroke:pal[2],'stroke-width':2.2,fill:'none'},G);
+  el('circle',{cx:-24,cy:-24,r:34,fill:'#FFFFFF',opacity:.14},G);
+}
+function peony(g,x,y,s){
+  const pal=pick(PEONY);
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(R(0,360))}) scale(${s.toFixed(2)})`},g);
+  el('circle',{cx:0,cy:0,r:92,fill:pal[1]},G);
+  let off=R(0,360); for(let i=0;i<9;i++) el('path',{d:leafD(108,130,.06,30,.5),fill:pal[0],stroke:pal[2],'stroke-width':1.5,'stroke-opacity':.4,transform:`rotate(${f(off+i*40)})`},G);
+  for(let i=0;i<11;i++) el('path',{d:leafD(72,86,.08,26,.55),fill:i%2?pal[1]:pal[0],stroke:pal[2],'stroke-width':1.4,'stroke-opacity':.45,transform:`rotate(${f(R(0,360))}) translate(0,${f(R(-6,6))})`},G);
+  for(let i=0;i<7;i++) el('path',{d:leafD(36,44,.1,18,.6),fill:pal[i%2?1:2],opacity:.9,transform:`rotate(${f(i*51+R(-10,10))})`},G);
+  for(let i=0;i<9;i++){ const a=R(0,6.28), r=R(4,14); el('circle',{cx:f(Math.cos(a)*r),cy:f(Math.sin(a)*r),r:3,fill:'#E9C766'},G); }
+  el('circle',{cx:-30,cy:-30,r:44,fill:'#FFFFFF',opacity:.13},G);
+}
+function cosmos(g,x,y,s){
+  const fill=pick(COSMOS);
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(R(0,45))}) scale(${s.toFixed(2)})`},g);
+  for(let i=0;i<8;i++) el('path',{d:'M0,-4 C-28,-14 -32,-70 -16,-82 L-8,-74 L0,-84 L8,-74 L16,-82 C32,-70 28,-14 0,-4Z',fill,stroke:'#D98A9D','stroke-width':1.4,'stroke-opacity':.5,transform:`rotate(${i*45+R(-5,5)})`},G);
+  el('circle',{cx:0,cy:0,r:16,fill:'#E9C766'},G);
+  for(let i=0;i<14;i++){ const a=i/14*6.283; el('circle',{cx:f(Math.cos(a)*15),cy:f(Math.sin(a)*15),r:2.6,fill:'#C99A33'},G); }
+}
+function blossom(g,x,y,s){
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(R(0,72))}) scale(${s.toFixed(2)})`},g);
+  for(let i=0;i<5;i++) el('path',{d:'M0,-6 C-32,-14 -36,-64 0,-72 C36,-64 32,-14 0,-6Z',fill:PETAL_W,stroke:'#E3C4C4','stroke-width':1.4,transform:`rotate(${i*72})`},G);
+  for(let i=0;i<16;i++){ const a=i/16*6.283, rr=R(8,18); el('line',{x1:0,y1:0,x2:f(Math.cos(a)*rr),y2:f(Math.sin(a)*rr),stroke:'#E3BC4E','stroke-width':2},G); el('circle',{cx:f(Math.cos(a)*rr),cy:f(Math.sin(a)*rr),r:3,fill:'#D9A93A'},G); }
+}
+function sunflower(g,x,y,s){
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(R(0,360))}) scale(${s.toFixed(2)})`},g);
+  for(let i=0;i<22;i++) el('path',{d:leafD(96,34,.03,14,.7),fill:SUN_A,transform:`rotate(${f(i*360/22)}) translate(0,-40)`},G);
+  for(let i=0;i<22;i++) el('path',{d:leafD(84,30,.03,14,.7),fill:SUN_B,stroke:'#C98A2A','stroke-width':1,'stroke-opacity':.4,transform:`rotate(${f(i*360/22+360/44)}) translate(0,-40)`},G);
+  el('circle',{cx:0,cy:0,r:52,fill:SUN_C,stroke:'#6B4423','stroke-width':3},G);
+  for(let i=0;i<170;i++){ const r=3.7*Math.sqrt(i), a=i*2.39996; if(r>48) break; el('circle',{cx:f(Math.cos(a)*r),cy:f(Math.sin(a)*r),r:1.9,fill:'#C9963E',opacity:.75},G); }
+}
+function bud(g,x,y,s,ang){
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(ang)}) scale(${s.toFixed(2)})`},g);
+  el('path',{d:'M0,0 Q4,-40 0,-70',stroke:'#5F7F46','stroke-width':4,fill:'none'},G);
+  el('path',{d:'M0,-64 C-20,-70 -20,-104 0,-118 C20,-104 20,-70 0,-64Z',fill:pick(ROSE)[1]},G);
+  leaf(G,0,-66,-40,32); leaf(G,0,-66,40,32);
+}
+function babysBreath(g,x,y,s,ang){
+  const G=el('g',{transform:`translate(${f(x)},${f(y)}) rotate(${f(ang)}) scale(${s.toFixed(2)})`},g);
+  for(let i=0;i<8;i++){ const ex=R(-70,70), ey=R(-150,-60);
+    el('path',{d:`M0,0 Q${f(ex*.3)},${f(ey*.6)} ${f(ex)},${f(ey)}`,stroke:'#8AA076','stroke-width':2,fill:'none'},G);
+    for(let k=0;k<4;k++) el('circle',{cx:f(ex+R(-14,14)),cy:f(ey+R(-14,14)),r:f(R(5,8)),fill:'#FFFDF8',stroke:'#DCCFC4','stroke-width':1.2},G); }
+}
+function butterfly(g,x,y,s,ang,c1,c2){
+  const bg=el('g',{transform:`translate(${x},${y}) rotate(${ang}) scale(${s})`},g);
+  [-1,1].forEach(d=>{
+    el('path',{d:`M0,0 C${d*30},-70 ${d*120},-90 ${d*110},-30 C${d*104},0 ${d*40},6 0,0Z`,fill:c1,opacity:.9},bg);
+    el('path',{d:`M0,4 C${d*60},10 ${d*86},60 ${d*48},80 C${d*22},90 ${d*8},40 0,4Z`,fill:c2,opacity:.9},bg);
+    el('circle',{cx:d*72,cy:-44,r:9,fill:'#FFFFFF',opacity:.5},bg);
+  });
+  el('ellipse',{cx:0,cy:14,rx:6,ry:34,fill:'#5A4A3E'},bg);
+  el('path',{d:'M-2,-18 Q-14,-56 -26,-64 M2,-18 Q14,-56 26,-64',stroke:'#5A4A3E','stroke-width':2.4,fill:'none'},bg);
+}
+
+/* ---------- Arch geometry ---------- */
+const CX=1920, HW=820, SPRING=860, RY=600, BASE=2300;
+function inArch(x,y,pad=0){ const dx=(x-CX)/(HW+pad); if(Math.abs(dx)>=1) return false; if(y>SPRING) return y<1740; return ((y-SPRING)/(RY+pad))**2 + dx*dx < 1; }
+function archPt(side,u){ const k=.42; if(u<k) return [CX+side*HW, 1780-(u/k)*(1780-SPRING)];
+  const th=Math.PI/2*((u-k)/(1-k)); return [CX+side*HW*Math.cos(th), SPRING-RY*Math.sin(th)]; }
+function archAng(side,u){ const a=archPt(side,Math.max(0,u-.005)), b=archPt(side,Math.min(1,u+.005)); return Math.atan2(b[1]-a[1],b[0]-a[0])*180/Math.PI; }
+function vinePt(side,u,amp){ const p=archPt(side,u); const a=archAng(side,u)*Math.PI/180; const off=amp*Math.sin(u*Math.PI*9); return [p[0]-Math.sin(a)*off, p[1]+Math.cos(a)*off]; }
+
+/* ---------- Cluster (rangkaian bunga) ---------- */
+const TYPES = [[rose,.34],[peony,.24],[cosmos,.14],[blossom,.16],['bud',.12]];
+function pickType(){ let r=rnd(), acc=0; for(const [t,w] of TYPES){ acc+=w; if(r<acc) return t; } return rose; }
+function cluster(g, cx, cy, rx, ry, n, {sun=0, big=1, leaves=1}={}){
+  const ok = (x,y) => !inArch(x,y,-120);
+  for(let k=0;k<Math.round(n*1.5*leaves);k++){ const a=R(0,6.283), r=Math.sqrt(rnd());
+    const x=cx+Math.cos(a)*rx*1.15*r, y=cy+Math.sin(a)*ry*1.15*r; if(!ok(x,y)) continue;
+    leaf(g,x,y,a*180/Math.PI+90+R(-25,25),R(120,180)*big); }
+  for(let k=0;k<3;k++){ const a=R(0,6.283); const x0=cx+Math.cos(a)*rx*.3, y0=cy+Math.sin(a)*ry*.3; const x2=cx+Math.cos(a)*rx*1.45, y2=cy+Math.sin(a)*ry*1.45;
+    if(!ok(x2,y2)) continue; eucalyptus(g,[x0,y0],[(x0+x2)/2+R(-40,40),(y0+y2)/2+R(-40,40)],[x2,y2],{n:7,size:30*big}); }
+  for(let k=0;k<2;k++){ const a=R(0,6.283); const x=cx+Math.cos(a)*rx*.8, y=cy+Math.sin(a)*ry*.8; if(ok(x,y)) babysBreath(g,x,y,big*R(.9,1.1),a*180/Math.PI+90); }
+  const items=[];
+  for(let k=0;k<n*3 && items.length<n;k++){ const a=R(0,6.283), r=Math.sqrt(rnd()); const x=cx+Math.cos(a)*rx*r, y=cy+Math.sin(a)*ry*r;
+    if(!ok(x,y)) continue; items.push({x,y,r,type:pickType(),s:R(.8,1.2)*big*(1.15-r*.35)}); }
+  for(let k=0;k<sun && k<items.length;k++){ const it=items[Math.floor(R(0,items.length))]; it.type=sunflower; it.s*=1.02; }
+  items.sort((a,b)=>b.r-a.r).forEach(it=>{ if(it.type==='bud') bud(g,it.x,it.y,it.s,R(-60,60)); else it.type(g,it.x,it.y,it.s); });
+}
+
+/* ---------- Washes ---------- */
+function blobPath(cx, cy, rx, ry, jitter, n=14){
+  const pts=[]; for(let i=0;i<n;i++){ const a=i/n*Math.PI*2; const k=1+R(-jitter,jitter); pts.push([cx+Math.cos(a)*rx*k, cy+Math.sin(a)*ry*k]); }
+  let d=''; for(let i=0;i<n;i++){ const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
+    if(i===0) d+=`M${f(p1[0])},${f(p1[1])}`;
+    d+=`C${f(p1[0]+(p2[0]-p0[0])/6)},${f(p1[1]+(p2[1]-p0[1])/6)} ${f(p2[0]-(p3[0]-p1[0])/6)},${f(p2[1]-(p3[1]-p1[1])/6)} ${f(p2[0])},${f(p2[1])}`; }
+  return d+'Z';
+}
+[
+  [300,250,950,700,'#F4BFC8',.5],[1100,80,700,380,'#BFD6A6',.4],[3500,260,900,650,'#BFD6A6',.45],[2750,60,700,360,'#F4BFC8',.4],
+  [500,1900,1100,520,'#BFD6A6',.5],[3350,1900,1100,520,'#F4BFC8',.48],[1920,2120,1500,380,'#F4BFC8',.4],
+  [120,1100,380,600,'#F6D5D9',.4],[3720,1100,380,600,'#F6D5D9',.4],
+].forEach(([x,y,rx,ry,c,o]) => el('path',{d:blobPath(x,y,rx,ry,.16),fill:c,opacity:o,filter:'url(#wash)'},$('washes')));
+
+/* Lapisan: efek cat air dipasang sekali per lapisan (bukan per daun) agar render cepat */
+function layer(id, extra){ const host=$(id); const inner=el('g',{filter:'url(#wc)'},host); if(extra){ return el('g',{filter:extra},inner); } return inner; }
+const BK=layer('back'), AR=$('arch'), MID=layer('mid','url(#lift)'), FR=layer('front','url(#lift)');
+
+/* ---------- Arch ---------- */
+function archD(hw, ry, base){ return `M${CX-hw},${base} L${CX-hw},${SPRING} A${hw} ${ry} 0 0 1 ${CX+hw},${SPRING} L${CX+hw},${base}`; }
+el('path',{d:archD(HW+30,RY+30,BASE)+'Z',fill:'#3E3A34',opacity:.07,filter:'url(#shadow)',transform:'translate(0,18)'},AR);
+el('path',{d:archD(HW,RY,BASE)+'Z',fill:'url(#archFill)'},AR);
+el('path',{d:archD(HW,RY,BASE),fill:'none',stroke:'#7E9E62','stroke-width':4,opacity:.3},AR);
+el('path',{d:archD(HW-38,RY-38,BASE),fill:'none',stroke:'#C98B98','stroke-width':2.5,opacity:.3},AR);
+
+/* ---------- Layer belakang: dedaunan besar & bunga pucat ---------- */
+leafBranch(BK,[-60,-40],[260,500],[120,1000],{n:12,size:230,w:8});
+leafBranch(BK,[3900,-40],[3580,520],[3730,1000],{n:12,size:230,w:8});
+leafBranch(BK,[600,-60],[760,260],[1040,420],{n:8,size:200,w:7});
+leafBranch(BK,[3240,-60],[3080,260],[2800,420],{n:8,size:200,w:7});
+leafBranch(BK,[-80,1500],[400,1200],[620,800],{n:10,size:220,w:7});
+leafBranch(BK,[3920,1500],[3440,1200],[3220,800],{n:10,size:220,w:7});
+for(let x=-120;x<=3960;x+=120){ leafBranch(BK,[x,2220],[x+R(-120,120),2000],[x+R(-200,200),1600-200*Math.abs(x-CX)/CX],{n:7,size:200,w:6}); }
+[[900,260],[2940,260],[420,1350],[3420,1350],[1250,1950],[2600,1950]].forEach(([x,y])=>{ peony(BK,x,y,1.3); rose(BK,x+160,y+90,1.0); });
+
+/* ---------- Garland di sepanjang arch ---------- */
+[-1,1].forEach(side=>{
+  const pts=[]; for(let i=0;i<=120;i++) pts.push(vinePt(side,i/120,14)); stem(MID,pts,6);
+  for(let i=0;i<58;i++){ const u=.01+i/58*.98; const [x,y]=vinePt(side,u,14); const a=archAng(side,u);
+    leaf(MID,x,y,a+90+(i%2?1:-1)*R(40,70),R(110,160)*(1-u*.2)); }
+  for(let i=0;i<10;i++){ const u=.04+i/10*.92; const [x,y]=vinePt(side,u,14); const a=archAng(side,u)+(i%2?60:-60);
+    const L=170; eucalyptus(MID,[x,y],[x+Math.cos(a*Math.PI/180)*L*.5,y+Math.sin(a*Math.PI/180)*L*.5],[x+Math.cos((a+15)*Math.PI/180)*L,y+Math.sin((a+15)*Math.PI/180)*L],{n:6,size:26}); }
+  for(let i=0;i<14;i++){ const u=.03+i/14*.95; const [x,y]=vinePt(side,u,14); const t=pick([blossom,cosmos,'bud','bud']);
+    if(t==='bud') bud(MID,x,y,R(.9,1.1),archAng(side,u)+90+R(-50,50)); else t(MID,x+R(-20,20),y+R(-20,20),R(.55,.75)); }
+});
+
+/* ---------- Rangkaian bunga utama ---------- */
+const ap = (s,u) => archPt(s,u);
+cluster(MID, ...ap(-1,.70), 270, 230, 14, {sun:1, big:1.15});   // bahu kiri
+cluster(MID, ...ap(-1,.16), 190, 230, 8);                       // kiri bawah
+cluster(MID, ...ap(1,.22), 260, 300, 14, {sun:1, big:1.12});    // kanan bawah
+cluster(MID, ...ap(1,.80), 200, 170, 8);                        // bahu kanan
+cluster(MID, CX, SPRING-RY-10, 250, 110, 9, {sun:1, big:.9});   // mahkota
+cluster(MID, 200, 170, 330, 240, 11, {sun:1});                  // pojok kiri atas
+cluster(MID, 3640, 170, 330, 240, 11, {sun:1});                 // pojok kanan atas
+cluster(MID, 250, 1060, 170, 210, 5);                           // sisi kiri
+cluster(MID, 3590, 1060, 170, 210, 5);                          // sisi kanan
+
+/* ---------- Taman bawah ---------- */
+cluster(MID, 200, 1930, 300, 280, 10, {sun:1, big:1.1});
+cluster(MID, 3640, 1930, 300, 280, 10, {big:1.1});
+cluster(FR, 950, 2030, 520, 190, 13, {sun:1, big:1.1});
+cluster(FR, 2890, 2030, 520, 190, 13, {sun:1, big:1.1});
+cluster(FR, CX, 2060, 560, 190, 16, {big:1.15});
+
+butterfly(MID,1330,300,1.0,-18,'#F2B6C1','#F7CED6');
+butterfly(MID,2520,250,.85,16,'#BFD6A6','#D8E6C8');
+
+/* ---------- Kelopak berjatuhan ---------- */
+const PT=layer('petals'); let placed=0, guard=0;
+while(placed<54 && guard<3000){ guard++; const x=R(80,3760), y=R(60,1800); if(inArch(x,y,60)) continue;
+  el('path',{d:'M0,-6 C-30,-14 -34,-62 0,-70 C34,-62 30,-14 0,-6Z',fill:pick(['#F4BFC8','#F8CBD3','#FFFFFF','#EDA0B1']),opacity:.75,
+    transform:`translate(${f(x)},${f(y)}) rotate(${f(R(0,360))}) scale(${R(.28,.48).toFixed(2)})`},PT); placed++; }
+
+/* ---------- Divider ---------- */
+const D=$('divider');
+el('path',{d:'M60,52 Q380,38 700,52',stroke:'#6F8A55','stroke-width':3,fill:'none','stroke-linecap':'round'},D);
+for(let i=0;i<5;i++){ leaf(D,140+i*50,50,(i%2?-1:1)*60-90,38); leaf(D,620-i*50,50,(i%2?1:-1)*60+90,38); }
+rose(D,380,46,.36);
+</script>
+</body>
+</html>
